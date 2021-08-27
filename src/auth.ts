@@ -1,7 +1,7 @@
 import { useCallback } from "react";
 import { cache } from "swr";
-import { apiPath, useRequest } from ".";
 import { useAuth } from "./AuthProvider";
+import { apiPath, useRequest } from "./core";
 import { UserType } from "./models";
 
 type Provider = "schoology" | "google";

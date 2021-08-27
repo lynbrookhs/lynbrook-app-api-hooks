@@ -27,7 +27,7 @@ const AuthContext = createContext<AuthContextType>({
 export const useAuth = () => useContext(AuthContext);
 
 type AuthProviderProps = {
-  loadToken: () => string | undefined;
+  loadToken: () => Promise<string | undefined>;
   onTokenChange: (token: string | undefined) => Promise<void>;
   fallback: ReactNode;
 } & Pick<AuthContextType, "afterRequest">;

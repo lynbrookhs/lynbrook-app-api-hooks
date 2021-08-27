@@ -58,7 +58,7 @@ export const apiFetcher = (token?: string) => async (path: string, options?: Req
 };
 
 const useAPIRequest = <T>(path: string) => {
-  const { token } = useAuth();
+  const { token, afterRequest } = useAuth();
   const signOut = useSignOut();
 
   const ret = useSWR<T, Error>(path, apiFetcher(token ?? ""));
@@ -67,6 +67,8 @@ const useAPIRequest = <T>(path: string) => {
   useEffect(() => {
     if (loggedOut) signOut();
   }, [loggedOut]);
+
+  afterRequest(ret);
 
   return ret;
 };
@@ -77,7 +79,7 @@ const useAPIRequestPaginated = <T>(path: string) => {
     return path;
   };
 
-  const { token } = useAuth();
+  const { token, afterRequest } = useAuth();
   const signOut = useSignOut();
 
   const ret = useSWRInfinite<PaginatedResponse<T>, Error>(getKey, apiFetcher(token ?? ""));
@@ -86,6 +88,8 @@ const useAPIRequestPaginated = <T>(path: string) => {
   useEffect(() => {
     if (loggedOut) signOut();
   }, [loggedOut]);
+
+  afterRequest(ret);
 
   return ret;
 };
@@ -129,7 +133,7 @@ export const useNextSchedule = () => useAPIRequest<CurrentSchedule>("/schedules/
 
 export const useRequest = (throw_on_error?: boolean) => {
   const [error, setError] = useState<Error | undefined>(undefined);
-  const { token, afterRequest } = useAuth();
+  const { token } = useAuth();
 
   const requestWithFunc = useCallback(
     async <T = any>(func: (token: string) => Promise<T>) => {

@@ -8,6 +8,7 @@ import React, {
   useState
 } from "react";
 import { SWRInfiniteResponse, SWRResponse } from "swr";
+import { Error } from "./core";
 
 type AuthContextType = {
   token?: string;

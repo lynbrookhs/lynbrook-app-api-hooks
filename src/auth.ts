@@ -22,7 +22,7 @@ export const useSignInWithProvider = (provider: Provider, throw_on_error?: boole
     return authorization_url;
   }, []);
 
-  const processProviderCallback = useCallback(async (params: { [key: string]: string }) => {
+  const handleProviderCallback = useCallback(async (params: { [key: string]: string }) => {
     const body = new URLSearchParams();
     for (const field of KEEP_CALLBACK_FIELDS[provider]) {
       body.append(field, params[field]);
@@ -35,10 +35,9 @@ export const useSignInWithProvider = (provider: Provider, throw_on_error?: boole
     if (access === undefined) return;
 
     setToken(access);
-    return access;
   }, []);
 
-  return { makeAuthorizationUri, processProviderCallback, error };
+  return { makeAuthorizationUri, handleProviderCallback, error };
 };
 
 export const useSignOut = () => {

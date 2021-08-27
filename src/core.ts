@@ -129,7 +129,7 @@ export const useNextSchedule = () => useAPIRequest<CurrentSchedule>("/schedules/
 
 export const useRequest = (throw_on_error?: boolean) => {
   const [error, setError] = useState<Error | undefined>(undefined);
-  const { token } = useAuth();
+  const { token, afterRequest } = useAuth();
 
   const requestWithFunc = useCallback(
     async <T = any>(func: (token: string) => Promise<T>) => {

@@ -68,8 +68,9 @@ type BaseOrganization = NestedOrganization & {
   advisors: NestedUser[];
   admins: NestedUser[];
   day?: DayOfWeek;
-  time?: APITime;
-  link?: string;
+  location: string;
+  time: string;
+  link: string;
   links: OrganizationLink[];
   ical_links: string[];
   description: string;
@@ -185,7 +186,7 @@ export type Event = {
   url: string;
   organization: NestedOrganization;
   name: string;
-  description?: string;
+  description: string;
   start: APIDateTime;
   end: APIDateTime;
   points: number;

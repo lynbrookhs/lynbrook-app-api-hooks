@@ -11,6 +11,7 @@ import { SWRInfiniteResponse, SWRResponse } from "swr";
 import { Error } from "./core";
 
 type AuthContextType = {
+  loading: boolean;
   token?: string;
   setToken: (token?: string) => void;
   afterRequest: (
@@ -19,6 +20,7 @@ type AuthContextType = {
 };
 
 const AuthContext = createContext<AuthContextType>({
+  loading: true,
   token: undefined,
   setToken: () => {},
   afterRequest: () => {}
@@ -57,7 +59,7 @@ const AuthProvider = ({
   }, []);
 
   return (
-    <AuthContext.Provider value={{ token, setToken, afterRequest }}>
+    <AuthContext.Provider value={{ loading, token, setToken, afterRequest }}>
       {loading ? fallback : children}
     </AuthContext.Provider>
   );

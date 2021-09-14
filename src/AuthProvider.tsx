@@ -53,7 +53,7 @@ const AuthProvider = ({
     (async () => {
       let token = await loadToken();
       if (!token) token = undefined;
-      setToken(token);
+      await setToken(token);
       setLoading(false);
     })();
   }, []);

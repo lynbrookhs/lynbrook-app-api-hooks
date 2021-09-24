@@ -15,7 +15,7 @@ import {
 } from "./models";
 
 export const apiPath = (path: string) => {
-  return new URL(path, "https://lynbrookasb.org/api/");
+  return new URL(path, "https://mvhs.lynbrookasb.org/api/");
 };
 
 export type Error = {

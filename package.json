@@ -28,7 +28,7 @@
     }
   },
   "prettier": {
-    "printWidth": 100
+    "printWidth": 120
   },
   "name": "lynbrook-app-api-hooks",
   "author": "Oliver Ni",

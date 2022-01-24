@@ -8,6 +8,8 @@ import {
   Membership,
   NestedSchedule,
   Organization,
+  Poll,
+  PollSubmission,
   Post,
   Prize,
   Schedule,
@@ -124,6 +126,12 @@ export const usePrizes = () => useAPIRequest<Prize[]>("/prizes/");
 export const usePosts = () => useAPIRequestPaginated<Post>("/posts/");
 export const usePost = (id: number) => useAPIRequest<Post>(`/posts/${id}/`);
 
+export const usePolls = (post_id: number) => useAPIRequest<Poll[]>(`/posts/${post_id}/polls/`);
+export const usePoll = (post_id: number, id: number) => useAPIRequest<Poll>(`/posts/${post_id}/polls/${id}/`);
+
+export const usePollSubmissions = (post_id: number, poll_id: number) =>
+  useAPIRequest<PollSubmission[]>(`/posts/${post_id}/polls/${poll_id}/submissions/`);
+
 export const useSchedules = () => useAPIRequest<Schedule[]>("/schedules/");
 
 export const useCurrentSchedule = () => useAPIRequest<CurrentSchedule>("/schedules/current/");
@@ -140,7 +148,7 @@ export const useRequest = (throw_on_error?: boolean) => {
       try {
         return (await func(token ?? "")) as T;
       } catch (error) {
-        setError(error);
+        setError(<Error>error);
         if (throw_on_error) throw error;
       }
       return;

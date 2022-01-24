@@ -116,6 +116,19 @@ type SelectPoll = BasePoll & {
 
 export type NestedPoll = ShortAnswerPoll | SelectPoll;
 
+export type Poll = NestedPoll & {
+  post: number;
+};
+
+// PollSubmission
+
+export type PollSubmission = {
+  id: number;
+  poll: number;
+  user: number;
+  responses: string[];
+};
+
 // Membership
 
 export type NestedMembership = {

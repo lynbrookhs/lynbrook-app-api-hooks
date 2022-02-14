@@ -131,11 +131,11 @@ export type PollSubmission = {
 export type NestedMembership = {
   organization: NestedOrganization;
   points: number;
+  points_spent: number;
 };
 
-export type Membership = {
+export type Membership = NestedMembership & {
   organization: Organization;
-  points: number;
 };
 
 // Period

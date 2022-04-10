@@ -215,6 +215,15 @@ export type Prize = {
   points: number;
 };
 
+// Wordle Entry
+
+export type WordleEntry = {
+  user: number;
+  date: APIDate;
+  guesses: string[];
+  results: (null | false | true)[];
+};
+
 // App Version
 
 type Version = string | number;

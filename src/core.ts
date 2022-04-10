@@ -13,7 +13,8 @@ import {
   Post,
   Prize,
   Schedule,
-  User
+  User,
+  WordleEntry
 } from "./models";
 
 export const apiPath = (path: string) => {
@@ -114,6 +115,9 @@ type CurrentSchedule = {
 
 export const useUser = () => useAPIRequest<User>("/users/me/");
 export const useMemberships = () => useAPIRequest<Membership[]>("/users/me/orgs/");
+
+export const useWordleEntries = () => useAPIRequest<WordleEntry[]>("/users/me/wordle_entries/");
+export const useCurrentWordleEntry = () => useAPIRequest<WordleEntry>("/users/me/wordle_entries/today/");
 
 export const useOrgs = () => useAPIRequest<Organization[]>(`/orgs/`);
 export const useOrg = (id: number) => useAPIRequest<Organization>(`/orgs/${id}/`);

@@ -14,9 +14,7 @@ type AuthContextType = {
   loading: boolean;
   token?: string;
   setToken: (token?: string) => void;
-  afterRequest: (
-    res: SWRResponse<any, Error> | SWRInfiniteResponse<any, Error>
-  ) => void | Promise<void>;
+  afterRequest: (res: SWRResponse<any, Error> | SWRInfiniteResponse<any, Error>) => void | Promise<void>;
 };
 
 const AuthContext = createContext<AuthContextType>({

@@ -220,6 +220,7 @@ export type Prize = {
 export type WordleEntry = {
   user: number;
   date: APIDate;
+  word: string;
   guesses: string[];
   results: (null | false | true)[][];
   state: { [key: string]: null | false | true };

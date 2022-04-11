@@ -222,6 +222,7 @@ export type WordleEntry = {
   date: APIDate;
   guesses: string[];
   results: (null | false | true)[][];
+  state: { [key: string]: null | false | true };
 };
 
 // App Version

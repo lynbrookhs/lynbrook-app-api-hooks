@@ -31,6 +31,7 @@ export type NestedUser = {
   first_name: string;
   last_name: string;
   type: UserType;
+  wordle_streak: number;
 };
 
 export type User = NestedUser & {

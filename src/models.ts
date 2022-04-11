@@ -224,6 +224,7 @@ export type WordleEntry = {
   guesses: string[];
   results: (null | false | true)[][];
   state: { [key: string]: null | false | true };
+  solved: true;
 };
 
 // App Version

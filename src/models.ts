@@ -226,6 +226,7 @@ export type WordleEntry = {
   results: (null | false | true)[][];
   state: { [key: string]: null | false | true };
   solved: true;
+  points: number | null;
 };
 
 // App Version

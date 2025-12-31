@@ -43,14 +43,14 @@ export const useSignInWithProvider = (provider: Provider, throw_on_error?: boole
 
 export const useSpendPoints = (throw_on_error?: boolean) => {
   const { request, error } = useRequest(throw_on_error);
-  
+
   const spendPoints = useCallback(async () => {
     const resp = await request("POST", "/users/spend-points/");
 
     await mutate("/users/me/");
     return resp;
   }, [request]);
-  
+
   return { spendPoints, error };
 };
 

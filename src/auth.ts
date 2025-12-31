@@ -3,6 +3,7 @@ import { cache } from "swr";
 import { useAuth } from "./AuthProvider";
 import { apiPath, useRequest } from "./core";
 import { UserType } from "./models";
+import { mutate } from "swr";
 
 type Provider = "schoology" | "google";
 
@@ -38,6 +39,19 @@ export const useSignInWithProvider = (provider: Provider, throw_on_error?: boole
   }, []);
 
   return { makeAuthorizationUri, handleProviderCallback, error };
+};
+
+export const useSpendPoints = (throw_on_error?: boolean) => {
+  const { request, error } = useRequest(throw_on_error);
+  
+  const spendPoints = useCallback(async () => {
+    const resp = await request("POST", "/users/spend-points/");
+
+    await mutate("/users/me/");
+    return resp;
+  }, [request]);
+  
+  return { spendPoints, error };
 };
 
 export const useSignOut = () => {

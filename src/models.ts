@@ -137,6 +137,18 @@ export type NestedMembership = {
 
 export type Membership = NestedMembership & {
   organization: Organization;
+  calendar_events: boolean;
+  receive_pings: boolean;
+};
+
+// CalendarEvent
+
+export type CalendarEvent = {
+  id: number;
+  title: string;
+  start: APIDateTime;
+  end: APIDateTime;
+  all_day: boolean;
 };
 
 // Period

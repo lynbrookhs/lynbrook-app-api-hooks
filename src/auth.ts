@@ -17,7 +17,7 @@ export const useSignInWithProvider = (provider: Provider, throw_on_error?: boole
   const { setToken } = useAuth();
 
   const makeAuthorizationUri = useCallback(async (redirectUri: string) => {
-    const authUrl = apiPath(`auth/o/${provider}/`);
+    const authUrl = apiPath(`/auth/o/${provider}/`);
     authUrl.searchParams.append("redirect_uri", redirectUri);
     const { authorization_url } = (await request("GET", authUrl.toString())) ?? {};
     return authorization_url;
@@ -30,7 +30,7 @@ export const useSignInWithProvider = (provider: Provider, throw_on_error?: boole
     }
 
     const { access } =
-      (await request("POST", `auth/o/${provider}/`, body.toString(), {
+      (await request("POST", `/auth/o/${provider}/`, body.toString(), {
         headers: { "Content-Type": "application/x-www-form-urlencoded" }
       })) ?? {};
     if (access === undefined) return;

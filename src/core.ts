@@ -19,7 +19,9 @@ import {
 } from "./models";
 
 export const apiPath = (path: string) => {
-  return new URL(path, "https://lynbrookasb.org/api/");
+  // Resolve every path under /api/ — a leading slash would otherwise discard
+  // the /api/ base and hit the server root, which 404s.
+  return new URL(path.replace(/^\//, ""), "https://lynbrookasb.org/api/");
 };
 
 export type Error = {

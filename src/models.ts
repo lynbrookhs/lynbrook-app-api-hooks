@@ -241,6 +241,36 @@ export type WordleEntry = {
   points: number | null;
 };
 
+// Memories
+
+export type MemoryRecipient = {
+  id: number;
+  first_name: string;
+  last_name: string;
+  grad_year?: number;
+};
+
+export type Memory = {
+  id: number;
+  photo: string;
+  note: string;
+  recipients: NestedUser[];
+  created_at: APIDateTime;
+};
+
+export type ReceivedMemory = {
+  id: number;
+  photo: string;
+  note: string;
+  sender: NestedUser;
+  created_at: APIDateTime;
+};
+
+export type ReceivedMemoriesResponse = {
+  released: boolean;
+  memories: ReceivedMemory[];
+};
+
 // App Version
 
 type Version = string | number;

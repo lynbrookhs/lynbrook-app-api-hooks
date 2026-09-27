@@ -5,6 +5,7 @@ import { useAuth } from "./AuthProvider";
 import {
   APIDate,
   CalendarEvent,
+  Memory,
   Event,
   Membership,
   NestedSchedule,
@@ -13,6 +14,7 @@ import {
   PollSubmission,
   Post,
   Prize,
+  ReceivedMemoriesResponse,
   Schedule,
   User,
   WordleEntry
@@ -120,6 +122,9 @@ export const useUser = () => useAPIRequest<User>("/users/me/");
 export const useMemberships = () => useAPIRequest<Membership[]>("/users/me/orgs/");
 
 export const useUserCalendarEvents = () => useAPIRequest<CalendarEvent[]>("/users/me/calendar_events/");
+
+export const useMyMemories = () => useAPIRequest<Memory[]>("/memories/");
+export const useReceivedMemories = () => useAPIRequest<ReceivedMemoriesResponse>("/memories/received/");
 
 export const useWordleEntries = () => useAPIRequest<WordleEntry[]>("/users/me/wordle_entries/");
 export const useCurrentWordleEntry = () => useAPIRequest<WordleEntry>("/users/me/wordle_entries/today/");

@@ -41,6 +41,7 @@ export type User = NestedUser & {
   is_staff: boolean;
   is_superuser: boolean;
   memberships: NestedMembership[];
+  memories_opt_out?: boolean;
 };
 
 // Organization
